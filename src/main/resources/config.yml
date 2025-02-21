@@ -1,0 +1,53 @@
+# Auto update from Guizhan Build is enabled by default.
+auto-update: true
+build-station: "Guizhan" # Expected "Guizhan" or "Blob"
+
+# Do not change this value unless you know what you are doing.
+config-version: C_20250221_2
+
+# Do not change this value unless you know what you are doing.
+debug: false
+
+bans:
+  block-break:
+    group1:
+      enabled: true # true / false
+      priority: lowest # lowest / low / normal / high / highest / monitor
+      items:
+        - a_slimefun_id # Slimefun item IDs, ex: STONE_CHUNK / stone_chunk
+        - and_it_s_allow_lowercase_letters
+  block-place:
+    group1:
+      enabled: true
+      priority: low
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters
+  craft-item:
+    group1:
+      enabled: true
+      priority: normal
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters
+  multi-block-craft:
+    group1:
+      enabled: true
+      priority: high
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters
+  player-drop-item:
+    group1:
+      enabled: true
+      priority: highest
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters
+  player-interact:
+    group1:
+      enabled: true
+      priority: monitor
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters

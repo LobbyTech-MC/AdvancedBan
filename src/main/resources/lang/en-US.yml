@@ -1,0 +1,32 @@
+# Allows color codes
+messages:
+  debug-prefix: "&b[Debug] "
+  commands:
+    no-permission: "You don't have permission to use this command!"
+    help:
+      header: "&b[Help] &fHelp Commands."
+      help: "&f/advancedban help &7- &fShows this help message."
+      reload: "&f/advancedban reload &7- &fReloads the plugin."
+      version: "&f/advancedban version &7- &fShows the plugin version."
+    reload:
+      success: "&aReloaded the plugin successfully."
+    version:
+      # {version} = plugin version
+      success: "&aVersion: &f{version}"
+  events:
+    # {name} = item name
+    cancel-block-break: "&4Disabled breaking {name}"
+    cancel-block-place: "&4Disabled placing {name}"
+    cancel-craft-item: "&4Disabled crafting {name}"
+    cancel-multi-block-craft: "&4Disabled crafting {name}"
+    cancel-player-drop-item: "&4Disabled dropping {name}"
+    cancel-player-interact: "&4Disabled interacting {name}"
+  load:
+    # {id} = item ID, {event_priority} = priority, {event_type} = event type
+    added-predication: "Added predication for {id} with priority {event_priority} for {event_type}"
+    no-configured-predications: "You have not configured the AdvancedBan plugin. Please check the example config.yml file."
+    invalid-bans-key: "Invalid bans key in config.yml: "
+    # {path} = path to config file
+    path: "Path: {path}"
+    # {value} = value of config option
+    value: "Value: {value}"

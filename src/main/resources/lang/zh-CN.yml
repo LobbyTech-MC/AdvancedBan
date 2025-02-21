@@ -1,0 +1,33 @@
+# Allows color codes
+messages:
+  debug-prefix: "&b[Debug] "
+  commands:
+    no-permission: "你没有权限使用这个指令!"
+    help:
+      header: "&b[Help] &f帮助."
+      help: "&f/advancedban help &7- &f显示帮助菜单."
+      reload: "&f/advancedban reload &7- &f重新加载插件."
+      version: "&f/advancedban version &7- &f显示插件版本."
+    reload:
+      success: "&a插件已重新加载."
+    version:
+      # {version} = plugin version
+      success: "&a插件版本: &f{version}"
+  events:
+    # {name} = item name
+    cancel-block-break: "&4服务器已禁止破坏 {name}."
+    cancel-block-place: "&4服务器已禁止放置 {name}."
+    cancel-craft-item: "&4服务器已禁止合成 {name}."
+    cancel-multi-block-craft: "&4服务器已禁止合成 {name}."
+    cancel-player-drop-item: "&4服务器已禁止丢弃 {name}."
+    cancel-player-interact: "&4服务器已禁止交互 {name}."
+  load:
+    failed-auto-update: "&c自动更新失败: {message}" # {message} = error message
+    # {id} = item ID, {event_priority} = priority, {event_type} = event type
+    added-predication: "Added predication for {id} with priority {event_priority} for {event_type}"
+    no-configured-predications: "你还没有开始配置插件!"
+    invalid-bans-key: "无效的物品: "
+    # {path} = path to config file
+    path: "位置: {path}"
+    # {value} = value of config option
+    value: "值: {value}"
