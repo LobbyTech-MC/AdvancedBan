@@ -1,7 +1,15 @@
 package com.balugaq.advancedban.api.enums;
 
+import com.balugaq.advancedban.api.annotations.Since;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This enum is used to notice the appearance of version of the configuration section
+ *
+ * @author balugaq
+ * @see Since
+ * @since 1.0
+ */
 public enum ConfigVersion {
     C_UNKNOWN,
     C_20250221_1,

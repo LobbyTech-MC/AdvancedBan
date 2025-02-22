@@ -6,6 +6,7 @@ import com.balugaq.advancedban.api.utils.EventUtil;
 import com.balugaq.advancedban.api.utils.Predications;
 import com.balugaq.advancedban.core.listeners.BlockPlaceListener;
 import com.balugaq.advancedban.implementation.AdvancedBan;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.BlockListener;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
@@ -16,6 +17,15 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+// todo: add support for FinalTech's fast machines & FinalTECH's fast machines & LogiTech's fast machines for EventTypes.MACHINE_CRAFT
+
+/**
+ * This class is used to mixin the Slimefun#{@link BlockListener} and FastMachines#SlimefunItemUtils
+ * to implement the specific banning logic.
+ *
+ * @author balugaq
+ * @since 1.0
+ */
 public class ByteBuddyInjector {
     public static boolean setup = false;
 
@@ -70,6 +80,13 @@ public class ByteBuddyInjector {
         }
     }
 
+    /**
+     * Fix Slimefun's block place listener when {@link SlimefunItem}
+     * is banned with {@code EventType.BLOCK_PLACE}
+     *
+     * @author balugaq
+     * @since 1.0
+     */
     public static class BlockListenerAdvice {
         @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
         public static boolean onMethodEnter(
@@ -89,6 +106,13 @@ public class ByteBuddyInjector {
         }
     }
 
+    /**
+     * Fix FastMachines' fast machines crafting when {@link SlimefunItem}
+     * is banned with {@code EventType.MACHINE_CRAFT}
+     *
+     * @author balugaq
+     * @since 1.0
+     */
     public static class SlimefunItemUtilsAdvice {
         @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
         public static boolean onMethodEnter(

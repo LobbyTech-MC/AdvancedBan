@@ -69,8 +69,9 @@ public class PredicationsLoader {
                 }
 
                 List<String> items = groupSection.getStringList(ITEMS_KEY);
-                for (String id : items) {
-                    SlimefunItem slimefunItem = SlimefunItem.getById(id.toUpperCase());
+                for (String rid : items) {
+                    String id = rid.toUpperCase();
+                    SlimefunItem slimefunItem = SlimefunItem.getById(id);
                     if (slimefunItem == null) {
                         if (id.equalsIgnoreCase(EXAMPLE_ITEM_1) || id.equalsIgnoreCase(EXAMPLE_ITEM_2)) {
                             configured = false;

@@ -3,6 +3,7 @@ package com.balugaq.advancedban.core.managers;
 import com.balugaq.advancedban.core.listeners.BlockBreakListener;
 import com.balugaq.advancedban.core.listeners.BlockPlaceListener;
 import com.balugaq.advancedban.core.listeners.CraftItemListener;
+import com.balugaq.advancedban.core.listeners.MachineCraftListener;
 import com.balugaq.advancedban.core.listeners.MultiBlockCraftListener;
 import com.balugaq.advancedban.core.listeners.PlayerDropItemListener;
 import com.balugaq.advancedban.core.listeners.PlayerInteractListener;
@@ -30,6 +31,7 @@ public class ListenerManager {
         listeners.add(new BlockBreakListener());
         listeners.add(new BlockPlaceListener());
         listeners.add(new CraftItemListener());
+        listeners.add(new MachineCraftListener());
         listeners.add(new MultiBlockCraftListener());
         listeners.add(new PlayerDropItemListener());
         listeners.add(new PlayerInteractListener());

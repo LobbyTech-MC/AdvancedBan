@@ -1,9 +1,18 @@
 package com.balugaq.advancedban.api.enums;
 
 import com.balugaq.advancedban.api.utils.Lang;
+import com.balugaq.advancedban.core.managers.PredicationsLoader;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This enum is used to ban the specific event for the {@link SlimefunItem}
+ *
+ * @author balugaq
+ * @see PredicationsLoader
+ * @since 1.0
+ */
 @Getter
 public enum EventType {
     BLOCK_BREAK("block-break", Lang.getMessage("events.cancel-block-break")),

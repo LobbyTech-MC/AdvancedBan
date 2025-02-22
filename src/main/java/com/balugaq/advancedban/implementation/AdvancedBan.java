@@ -3,6 +3,7 @@ package com.balugaq.advancedban.implementation;
 import com.balugaq.advancedban.api.inject.ByteBuddyInjector;
 import com.balugaq.advancedban.api.utils.Lang;
 import com.balugaq.advancedban.api.utils.Predications;
+import com.balugaq.advancedban.core.listeners.MachineCraftListener;
 import com.balugaq.advancedban.core.managers.CommandManager;
 import com.balugaq.advancedban.core.managers.ConfigManager;
 import com.balugaq.advancedban.core.managers.IntegrationManager;
@@ -122,6 +123,7 @@ public class AdvancedBan extends JavaPlugin implements SlimefunAddon {
         getLogger().info("Unloading listeners...");
         getListenerManager().unload();
         Predications.clearPredications();
+        MachineCraftListener.rollback();
         getLogger().info("AdvancedBan disabled.");
     }
 

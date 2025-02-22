@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.balugaq.advancedban</groupId>
     <artifactId>SlimefunAdvancedBan</artifactId>
-    <version>4</version>
+    <version>5</version>
 
     <pluginRepositories>
         <pluginRepository>
@@ -111,8 +111,8 @@
                             <style>PALANTIR</style>
                         </palantirJavaFormat>
 
-                        <removeUnusedImports />
-                        <formatAnnotations />
+                        <removeUnusedImports/>
+                        <formatAnnotations/>
                     </java>
                 </configuration>
             </plugin>
