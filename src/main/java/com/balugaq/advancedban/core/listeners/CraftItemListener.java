@@ -44,6 +44,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLowest(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.LOWEST)) {
+            Debug.debug("CraftItemListener#onLowest(): Cancelled. 21");
             event.setCancelled(true);
         }
     }
@@ -51,6 +52,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onLow(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.LOW)) {
+            Debug.debug("CraftItemListener#onLow(): Cancelled. 22");
             event.setCancelled(true);
         }
     }
@@ -58,6 +60,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onNormal(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.NORMAL)) {
+            Debug.debug("CraftItemListener#onNormal(): Cancelled. 23");
             event.setCancelled(true);
         }
     }
@@ -65,6 +68,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onHigh(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.HIGH)) {
+            Debug.debug("CraftItemListener#onHigh(): Cancelled. 24");
             event.setCancelled(true);
         }
     }
@@ -72,6 +76,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHighest(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.HIGHEST)) {
+            Debug.debug("CraftItemListener#onHighest(): Cancelled. 25");
             event.setCancelled(true);
         }
     }
@@ -79,6 +84,7 @@ public class CraftItemListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMonitor(@NotNull FakeCraftItemEvent event) {
         if (presetPredications(event, EventPriority.MONITOR)) {
+            Debug.debug("CraftItemListener#onMonitor(): Cancelled. 26");
             event.setCancelled(true);
         }
     }

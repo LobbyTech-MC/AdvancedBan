@@ -22,7 +22,7 @@ public class Predications {
     }
 
     @Contract("null, _ -> false; _, null -> false;")
-    public static boolean ifPreset(@Nullable String itemId, @Nullable EventType type) {
+    public static boolean preset(@Nullable String itemId, @Nullable EventType type) {
         if (itemId == null || type == null) {
             return false;
         }
@@ -46,7 +46,7 @@ public class Predications {
         if (itemId == null || type == null) {
             return null;
         }
-        if (!ifPreset(itemId, type)) {
+        if (!preset(itemId, type)) {
             return null;
         }
 

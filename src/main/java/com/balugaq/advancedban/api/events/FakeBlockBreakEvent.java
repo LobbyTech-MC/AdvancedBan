@@ -1,6 +1,8 @@
 package com.balugaq.advancedban.api.events;
 
+import com.balugaq.advancedban.api.Debug;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.implementation.listeners.BlockListener;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import org.bukkit.block.Block;
@@ -25,5 +27,12 @@ public class FakeBlockBreakEvent extends BlockBreakEvent implements FakeEvent {
         } else {
             slimefunId = null;
         }
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        super.setCancelled(cancelled);
+        Debug.debug("FakeBlockBreakEvent#setCancelled() : Called 50");
+        Debug.stackTraceManually();
     }
 }

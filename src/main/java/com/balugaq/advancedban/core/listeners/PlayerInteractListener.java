@@ -46,6 +46,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLowest(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.LOWEST)) {
+            Debug.debug("PlayerInteractListener#onLowest(): Cancelled. 39");
             event.setCancelled(true);
         }
     }
@@ -53,6 +54,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onLow(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.LOW)) {
+            Debug.debug("PlayerInteractListener#onLow(): Cancelled. 40");
             event.setCancelled(true);
         }
     }
@@ -60,6 +62,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onNormal(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.NORMAL)) {
+            Debug.debug("PlayerInteractListener#onNormal(): Cancelled. 41");
             event.setCancelled(true);
         }
     }
@@ -67,6 +70,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onHigh(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.HIGH)) {
+            Debug.debug("PlayerInteractListener#onHigh(): Cancelled. 42");
             event.setCancelled(true);
         }
     }
@@ -74,6 +78,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHighest(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.HIGHEST)) {
+            Debug.debug("PlayerInteractListener#onHighest(): Cancelled. 43");
             event.setCancelled(true);
         }
     }
@@ -81,6 +86,7 @@ public class PlayerInteractListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMonitor(@NotNull FakePlayerInteractEvent event) {
         if (presetPredications(event, EventPriority.MONITOR)) {
+            Debug.debug("PlayerInteractListener#onMonitor(): Cancelled. 44");
             event.setCancelled(true);
         }
     }

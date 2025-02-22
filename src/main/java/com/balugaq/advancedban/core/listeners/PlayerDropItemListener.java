@@ -44,6 +44,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLowest(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.LOWEST)) {
+            Debug.debug("PlayerDropItemListener#onLowest(): Cancelled. 33");
             event.setCancelled(true);
         }
     }
@@ -51,6 +52,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onLow(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.LOW)) {
+            Debug.debug("PlayerDropItemListener#onLow(): Cancelled. 34");
             event.setCancelled(true);
         }
     }
@@ -58,6 +60,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onNormal(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.NORMAL)) {
+            Debug.debug("PlayerDropItemListener#onNormal(): Cancelled. 35");
             event.setCancelled(true);
         }
     }
@@ -65,6 +68,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onHigh(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.HIGH)) {
+            Debug.debug("PlayerDropItemListener#onHigh(): Cancelled. 36");
             event.setCancelled(true);
         }
     }
@@ -72,6 +76,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHighest(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.HIGHEST)) {
+            Debug.debug("PlayerDropItemListener#onHighest(): Cancelled. 37");
             event.setCancelled(true);
         }
     }
@@ -79,6 +84,7 @@ public class PlayerDropItemListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMonitor(@NotNull FakePlayerDropItemEvent event) {
         if (presetPredications(event, EventPriority.MONITOR)) {
+            Debug.debug("PlayerDropItemListener#onMonitor(): Cancelled. 38");
             event.setCancelled(true);
         }
     }

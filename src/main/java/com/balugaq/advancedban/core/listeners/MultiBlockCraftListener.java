@@ -63,6 +63,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLowest(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.LOWEST)) {
+            Debug.debug("MultiBlockCraftListener#onLowest(): Cancelled. 27");
             event.setCancelled(true);
         }
     }
@@ -70,6 +71,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onLow(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.LOW)) {
+            Debug.debug("MultiBlockCraftListener#onLow(): Cancelled. 28");
             event.setCancelled(true);
         }
     }
@@ -77,6 +79,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onNormal(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.NORMAL)) {
+            Debug.debug("MultiBlockCraftListener#onNormal(): Cancelled. 29");
             event.setCancelled(true);
         }
     }
@@ -84,6 +87,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onHigh(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.HIGH)) {
+            Debug.debug("MultiBlockCraftListener#onHigh(): Cancelled. 30");
             event.setCancelled(true);
         }
     }
@@ -91,6 +95,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHighest(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.HIGHEST)) {
+            Debug.debug("MultiBlockCraftListener#onHighest(): Cancelled. 31");
             event.setCancelled(true);
         }
     }
@@ -98,6 +103,7 @@ public class MultiBlockCraftListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMonitor(@NotNull FakeMultiBlockCraftEvent event) {
         if (presetPredications(event, EventPriority.MONITOR)) {
+            Debug.debug("MultiBlockCraftListener#onMonitor(): Cancelled. 32");
             event.setCancelled(true);
         }
     }

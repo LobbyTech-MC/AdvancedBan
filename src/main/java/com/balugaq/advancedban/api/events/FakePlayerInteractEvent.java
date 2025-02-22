@@ -1,10 +1,12 @@
 package com.balugaq.advancedban.api.events;
 
+import com.balugaq.advancedban.api.Debug;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.Getter;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -29,4 +31,26 @@ public class FakePlayerInteractEvent extends PlayerInteractEvent implements Fake
             slimefunId = null;
         }
     }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        super.setCancelled(cancelled);
+        Debug.debug("FakePlayerInteractEvent#setCancelled() : Called 45");
+        Debug.stackTraceManually();
+    }
+
+    @Override
+    public void setUseInteractedBlock(@NotNull Event.Result useInteractedBlock) {
+        super.setUseInteractedBlock(useInteractedBlock);
+        Debug.debug("FakePlayerInteractEvent#setUseInteractedBlock() : Called 56");
+        Debug.stackTraceManually();
+    }
+
+    @Override
+    public void setUseItemInHand(@NotNull Event.Result useItemInHand) {
+        super.setUseItemInHand(useItemInHand);
+        Debug.debug("FakePlayerInteractEvent#setUseItemInHand() : Called 57");
+        Debug.stackTraceManually();
+    }
+
 }

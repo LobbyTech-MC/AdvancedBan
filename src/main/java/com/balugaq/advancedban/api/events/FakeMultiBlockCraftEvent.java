@@ -1,5 +1,6 @@
 package com.balugaq.advancedban.api.events;
 
+import com.balugaq.advancedban.api.Debug;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
@@ -31,5 +32,12 @@ public class FakeMultiBlockCraftEvent extends MultiBlockCraftEvent implements Fa
         if (item != null) {
             slimefunIds.add(item.getId());
         }
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        super.setCancelled(cancelled);
+        Debug.debug("FakeMultiBlockCraftEvent#setCancelled() : Called 47");
+        Debug.stackTraceManually();
     }
 }

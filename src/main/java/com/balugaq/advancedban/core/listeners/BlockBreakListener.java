@@ -44,6 +44,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLowest(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.LOWEST)) {
+            Debug.debug("BlockBreakListener#onLowest(): Cancelled. 9");
             event.setCancelled(true);
         }
     }
@@ -51,6 +52,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onLow(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.LOW)) {
+            Debug.debug("BlockBreakListener#onLow(): Cancelled. 10");
             event.setCancelled(true);
         }
     }
@@ -58,6 +60,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onNormal(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.NORMAL)) {
+            Debug.debug("BlockBreakListener#onNormal(): Cancelled. 11");
             event.setCancelled(true);
         }
     }
@@ -65,6 +68,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onHigh(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.HIGH)) {
+            Debug.debug("BlockBreakListener#onHigh(): Cancelled. 12");
             event.setCancelled(true);
         }
     }
@@ -72,6 +76,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHighest(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.HIGHEST)) {
+            Debug.debug("BlockBreakListener#onHighest(): Cancelled. 13");
             event.setCancelled(true);
         }
     }
@@ -79,6 +84,7 @@ public class BlockBreakListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMonitor(@NotNull FakeBlockBreakEvent event) {
         if (presetPredications(event, EventPriority.MONITOR)) {
+            Debug.debug("BlockBreakListener#onMonitor(): Cancelled. 14");
             event.setCancelled(true);
         }
     }

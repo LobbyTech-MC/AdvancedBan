@@ -77,10 +77,12 @@ public class Debug {
     }
 
     public static void stackTraceManually() {
-        try {
-            throw new Error();
-        } catch (Throwable e) {
-            Debug.log(e);
+        if (AdvancedBan.getInstance().getConfigManager().isDebug()) {
+            try {
+                throw new Error();
+            } catch (Throwable e) {
+                Debug.log(e);
+            }
         }
     }
 

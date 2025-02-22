@@ -1,5 +1,6 @@
 package com.balugaq.advancedban.api.events;
 
+import com.balugaq.advancedban.api.Debug;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.Getter;
 import org.bukkit.event.inventory.ClickType;
@@ -29,5 +30,12 @@ public class FakeCraftItemEvent extends CraftItemEvent implements FakeEvent {
         } else {
             slimefunId = null;
         }
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        super.setCancelled(cancelled);
+        Debug.debug("FakeCraftItemEvent#setCancelled() : Called 48");
+        Debug.stackTraceManually();
     }
 }

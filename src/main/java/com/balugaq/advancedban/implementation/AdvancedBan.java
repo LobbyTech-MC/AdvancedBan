@@ -1,5 +1,6 @@
 package com.balugaq.advancedban.implementation;
 
+import com.balugaq.advancedban.api.ByteBuddyInjector;
 import com.balugaq.advancedban.api.Lang;
 import com.balugaq.advancedban.core.managers.CommandManager;
 import com.balugaq.advancedban.core.managers.ConfigManager;
@@ -66,6 +67,8 @@ public class AdvancedBan extends JavaPlugin implements SlimefunAddon {
         getListenerManager().load();
         getLogger().info("Loading predications...");
         PredicationsLoader.loadPredications();
+        getLogger().info("Loading injector...");
+        ByteBuddyInjector.inject();
 
         getLogger().info("Checking for updates...");
         switch (getConfigManager().getBuildStation()) {

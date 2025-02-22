@@ -20,7 +20,7 @@ import java.util.List;
 
 @Getter
 public class CommandManager implements TabExecutor {
-    private static final String ROOT_COMMAND = "advancedban";
+    private static final String ROOT_COMMAND = "slimefunadvancedban";
     private final JavaPlugin plugin;
     private final List<SubCommand> subCommands = new ArrayList<>();
     private final SubCommand defaultCommand;

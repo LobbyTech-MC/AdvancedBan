@@ -1,5 +1,6 @@
 package com.balugaq.advancedban.api.events;
 
+import com.balugaq.advancedban.api.Debug;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.Getter;
 import org.bukkit.entity.Item;
@@ -24,5 +25,12 @@ public class FakePlayerDropItemEvent extends PlayerDropItemEvent implements Fake
         } else {
             slimefunId = null;
         }
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        super.setCancelled(cancelled);
+        Debug.debug("FakePlayerDropItemEvent#setCancelled() : Called 46");
+        Debug.stackTraceManually();
     }
 }

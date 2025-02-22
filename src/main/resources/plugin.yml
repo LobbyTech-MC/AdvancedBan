@@ -1,4 +1,4 @@
-name: AdvancedBan
+name: SlimefunAdvancedBan
 author: balugaq
 description: This is a Slimefun addon.
 main: com.balugaq.advancedban.implementation.AdvancedBan
@@ -10,9 +10,9 @@ depend:
 softdepend:
   - GuizhanLibPlugin
 commands:
-  advancedban:
+  slimefunadvancedban:
     aliases:
-      - ab
+      - sab
       - advancedban
-    description: /advancedban
-    usage: /advancedban <sub>
+    description: /slimefunadvancedban
+    usage: /slimefunadvancedban <sub>
