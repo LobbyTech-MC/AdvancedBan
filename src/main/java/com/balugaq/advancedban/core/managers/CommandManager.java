@@ -1,8 +1,9 @@
 package com.balugaq.advancedban.core.managers;
 
-import com.balugaq.advancedban.api.Lang;
+import com.balugaq.advancedban.api.utils.Lang;
 import com.balugaq.advancedban.core.commands.SubCommand;
 import com.balugaq.advancedban.core.commands.subcommands.HelpCommand;
+import com.balugaq.advancedban.core.commands.subcommands.IdCommand;
 import com.balugaq.advancedban.core.commands.subcommands.ReloadCommand;
 import com.balugaq.advancedban.core.commands.subcommands.VersionCommand;
 import com.google.common.base.Preconditions;
@@ -21,9 +22,10 @@ import java.util.List;
 @Getter
 public class CommandManager implements TabExecutor {
     private static final String ROOT_COMMAND = "slimefunadvancedban";
-    private final JavaPlugin plugin;
+    private final @NotNull JavaPlugin plugin;
     private final List<SubCommand> subCommands = new ArrayList<>();
-    private final SubCommand defaultCommand;
+    private final @NotNull SubCommand defaultCommand;
+
     public CommandManager(@NotNull JavaPlugin plugin) {
         Preconditions.checkNotNull(plugin, "Plugin cannot be null");
         this.plugin = plugin;
@@ -36,6 +38,7 @@ public class CommandManager implements TabExecutor {
         subCommands.add(new HelpCommand(plugin));
         subCommands.add(new ReloadCommand(plugin));
         subCommands.add(new VersionCommand(plugin));
+        subCommands.add(new IdCommand(plugin));
     }
 
     public void registerCommand() {
@@ -67,7 +70,7 @@ public class CommandManager implements TabExecutor {
 
     @Nullable
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         List<String> subCommandNames = subCommands.stream().map(SubCommand::getName).toList();
         if (args.length <= 1) {
             return subCommandNames;

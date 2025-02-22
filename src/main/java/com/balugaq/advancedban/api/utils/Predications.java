@@ -1,12 +1,13 @@
-package com.balugaq.advancedban.api;
+package com.balugaq.advancedban.api.utils;
 
-import com.balugaq.advancedban.api.events.EventType;
+import com.balugaq.advancedban.api.enums.EventType;
 import lombok.experimental.UtilityClass;
 import org.bukkit.event.EventPriority;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,5 +52,16 @@ public class Predications {
         }
 
         return PREDICATIONS.get(itemId).get(type);
+    }
+
+    @Nonnull
+    public static Map<String, Map<EventType, EventPriority>> getPredications() {
+        return PREDICATIONS;
+    }
+
+    public static void clearPredications() {
+        synchronized (PREDICATIONS) {
+            PREDICATIONS.clear();
+        }
     }
 }

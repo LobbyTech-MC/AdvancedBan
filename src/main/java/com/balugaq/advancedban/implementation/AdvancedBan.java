@@ -1,7 +1,8 @@
 package com.balugaq.advancedban.implementation;
 
-import com.balugaq.advancedban.api.ByteBuddyInjector;
-import com.balugaq.advancedban.api.Lang;
+import com.balugaq.advancedban.api.inject.ByteBuddyInjector;
+import com.balugaq.advancedban.api.utils.Lang;
+import com.balugaq.advancedban.api.utils.Predications;
 import com.balugaq.advancedban.core.managers.CommandManager;
 import com.balugaq.advancedban.core.managers.ConfigManager;
 import com.balugaq.advancedban.core.managers.IntegrationManager;
@@ -23,13 +24,13 @@ public class AdvancedBan extends JavaPlugin implements SlimefunAddon {
     @Getter
     private static boolean enabledPlugin = false;
     @Getter
+    private static AdvancedBan instance;
+    @Getter
     private final String username = "balugaq";
     @Getter
     private final String repo = "AdvancedBan";
     @Getter
     private final String branch = "master";
-    @Getter
-    private static AdvancedBan instance;
     @Getter
     private ConfigManager configManager;
     @Getter
@@ -120,6 +121,7 @@ public class AdvancedBan extends JavaPlugin implements SlimefunAddon {
         getLogger().info("Disabling AdvancedBan...");
         getLogger().info("Unloading listeners...");
         getListenerManager().unload();
+        Predications.clearPredications();
         getLogger().info("AdvancedBan disabled.");
     }
 

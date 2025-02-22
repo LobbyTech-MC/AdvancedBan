@@ -3,6 +3,10 @@ messages:
   debug-prefix: "&b[Debug] "
   commands:
     no-permission: "You don't have permission to use this command!"
+    player-only: "This command can only be used by players!"
+    console-only: "This command can only be used by the console!"
+    not-slimefun-item-in-hand: "You must be holding a Slimefun item in your hand!"
+    click-to-copy: "Click to copy"
     help:
       header: "&b[Help] &fHelp Commands."
       help: "&f/advancedban help &7- &fShows this help message."
@@ -13,14 +17,18 @@ messages:
     version:
       # {version} = plugin version
       success: "&aVersion: &f{version}"
+    id:
+      # {id} = item ID
+      success: "&aItem ID: &f{id}"
   events:
     # {name} = item name
-    cancel-block-break: "&4Disabled breaking {name}"
-    cancel-block-place: "&4Disabled placing {name}"
-    cancel-craft-item: "&4Disabled crafting {name}"
-    cancel-multi-block-craft: "&4Disabled crafting {name}"
-    cancel-player-drop-item: "&4Disabled dropping {name}"
-    cancel-player-interact: "&4Disabled interacting {name}"
+    cancel-block-break: "&cDisabled breaking {name}"
+    cancel-block-place: "&cDisabled placing {name}"
+    cancel-craft-item: "&cDisabled crafting {name}"
+    cancel-multi-block-craft: "&cDisabled crafting {name}"
+    cancel-player-drop-item: "&cDisabled dropping {name}"
+    cancel-player-interact: "&cDisabled interacting {name}"
+    cancel-machine-craft: "&cDisabled crafting {name}."
   load:
     # {id} = item ID, {event_priority} = priority, {event_type} = event type
     added-predication: "Added predication for {id} with priority {event_priority} for {event_type}"

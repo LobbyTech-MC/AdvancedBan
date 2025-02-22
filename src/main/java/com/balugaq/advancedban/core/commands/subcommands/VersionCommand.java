@@ -1,6 +1,6 @@
 package com.balugaq.advancedban.core.commands.subcommands;
 
-import com.balugaq.advancedban.api.Lang;
+import com.balugaq.advancedban.api.utils.Lang;
 import com.balugaq.advancedban.core.commands.SubCommand;
 import com.balugaq.advancedban.implementation.AdvancedBan;
 import org.bukkit.command.Command;
@@ -22,7 +22,7 @@ public class VersionCommand extends SubCommand {
     }
 
     @Override
-    public boolean canCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean canCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (args.length == 0) {
             return false;
         }

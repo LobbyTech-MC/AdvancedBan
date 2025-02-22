@@ -3,7 +3,7 @@ auto-update: true
 build-station: "Guizhan" # Expected "Guizhan" or "Blob"
 
 # Do not change this value unless you know what you are doing.
-config-version: C_20250221_2
+config-version: C_20250222_1
 
 # Do not change this value unless you know what you are doing.
 debug: false
@@ -48,6 +48,13 @@ bans:
     group1:
       enabled: true
       priority: monitor
+      items:
+        - a_slimefun_id
+        - and_it_s_allow_lowercase_letters
+  machine-craft:
+    group1:
+      enabled: true
+      # No priority for machine-craft
       items:
         - a_slimefun_id
         - and_it_s_allow_lowercase_letters

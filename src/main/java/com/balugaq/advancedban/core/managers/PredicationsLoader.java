@@ -1,8 +1,9 @@
 package com.balugaq.advancedban.core.managers;
 
-import com.balugaq.advancedban.api.Lang;
-import com.balugaq.advancedban.api.Predications;
-import com.balugaq.advancedban.api.events.EventType;
+import com.balugaq.advancedban.api.enums.EventType;
+import com.balugaq.advancedban.api.utils.Debug;
+import com.balugaq.advancedban.api.utils.Lang;
+import com.balugaq.advancedban.api.utils.Predications;
 import com.balugaq.advancedban.implementation.AdvancedBan;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.experimental.UtilityClass;
@@ -21,11 +22,21 @@ public class PredicationsLoader {
     public static final String EXAMPLE_ITEM_1 = "a_slimefun_id";
     public static final String EXAMPLE_ITEM_2 = "and_it_s_allow_lowercase_letters";
     public static final String DEFAULT_PRIORITY = "NORMAL";
+
     public static void loadPredications() {
         boolean configured = true;
         boolean configuredDifferentItem = false;
-        FileConfiguration configuration = AdvancedBan.getInstance().getConfig();
+        FileConfiguration configuration = AdvancedBan.getInstance().getConfigManager().getConfig();
+        Debug.debug("Loading predications");
+        for (String key : configuration.getKeys(false)) {
+            Debug.debug("Key: " + key);
+        }
+        Debug.debug("Loading bans");
         ConfigurationSection bans = configuration.getConfigurationSection(BANS_KEY);
+        if (bans == null) {
+            return;
+        }
+
         for (EventType eventType : EventType.values()) {
             String key = eventType.getKey();
             if (!bans.contains(key)) {

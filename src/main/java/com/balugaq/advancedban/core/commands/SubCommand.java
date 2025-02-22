@@ -11,13 +11,15 @@ import java.util.List;
 
 @Getter
 public abstract class SubCommand {
-    private final JavaPlugin plugin;
+    private final @NotNull JavaPlugin plugin;
+
     public SubCommand(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
     @NotNull
     public abstract String getName();
+
     public abstract boolean canCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args);
 
     public abstract boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args);

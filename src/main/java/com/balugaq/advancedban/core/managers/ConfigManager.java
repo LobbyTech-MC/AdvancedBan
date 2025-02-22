@@ -1,8 +1,9 @@
 package com.balugaq.advancedban.core.managers;
 
-import com.balugaq.advancedban.api.Since;
-import com.balugaq.advancedban.api.events.BuildStation;
-import com.balugaq.advancedban.api.events.ConfigVersion;
+import com.balugaq.advancedban.api.annotations.Since;
+import com.balugaq.advancedban.api.enums.BuildStation;
+import com.balugaq.advancedban.api.enums.ConfigVersion;
+import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,21 +17,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+@Getter
 public class ConfigManager {
+    private final @NotNull FileConfiguration config;
     @Since(ConfigVersion.C_20250221_1)
     private final boolean AUTO_UPDATE;
     @Since(ConfigVersion.C_20250221_1)
     private final boolean DEBUG;
     @Since(ConfigVersion.C_20250221_1)
+    private final @NotNull String LANGUAGE;
+    private final @NotNull JavaPlugin plugin;
+    @Since(ConfigVersion.C_20250221_1)
     private BuildStation BUILD_STATION;
     @Since(ConfigVersion.C_20250221_1)
     private ConfigVersion CONFIG_VERSION;
-    @Since(ConfigVersion.C_20250221_1)
-    private final @NotNull String LANGUAGE;
-    private final @NotNull JavaPlugin plugin;
 
     public ConfigManager(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
+        this.config = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "config.yml"));
         setupDefaultConfig();
         try {
             this.CONFIG_VERSION = ConfigVersion.valueOf(plugin.getConfig().getString("config-version", "UNKNOWN").toUpperCase());
@@ -38,16 +42,16 @@ public class ConfigManager {
             plugin.getLogger().warning("Invalid config-version value: " + plugin.getConfig().getString("config-version", "UNKNOWN") + ", using default value: UNKNOWN");
             this.CONFIG_VERSION = ConfigVersion.C_UNKNOWN;
         }
-        this.AUTO_UPDATE = plugin.getConfig().getBoolean("auto-update", false);
-        this.DEBUG = plugin.getConfig().getBoolean("debug", false);
-        String buildStationStr = plugin.getConfig().getString("build-station", "Guizhan");
+        this.AUTO_UPDATE = config.getBoolean("auto-update", false);
+        this.DEBUG = config.getBoolean("debug", false);
+        String buildStationStr = config.getString("build-station", "Guizhan");
         try {
             this.BUILD_STATION = BuildStation.valueOf(buildStationStr.toUpperCase());
         } catch (IllegalArgumentException e) {
             plugin.getLogger().warning("Invalid build-station value: " + buildStationStr + ", using default value: Guizhan");
             this.BUILD_STATION = BuildStation.GUIZHAN;
         }
-        this.LANGUAGE = plugin.getConfig().getString("language", "zh-CN");
+        this.LANGUAGE = config.getString("language", "zh-CN");
     }
 
     private void setupDefaultConfig() {
@@ -95,7 +99,7 @@ public class ConfigManager {
         return DEBUG;
     }
 
-    public String getLanguage() {
+    public @NotNull String getLanguage() {
         return LANGUAGE;
     }
 

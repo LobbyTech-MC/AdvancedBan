@@ -1,4 +1,4 @@
-package com.balugaq.advancedban.api.events;
+package com.balugaq.advancedban.api.enums;
 
 public enum BuildStation {
     GUIZHAN,

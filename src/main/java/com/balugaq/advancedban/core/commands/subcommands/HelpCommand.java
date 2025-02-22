@@ -1,6 +1,6 @@
 package com.balugaq.advancedban.core.commands.subcommands;
 
-import com.balugaq.advancedban.api.Lang;
+import com.balugaq.advancedban.api.utils.Lang;
 import com.balugaq.advancedban.core.commands.SubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,7 +21,7 @@ public class HelpCommand extends SubCommand {
     }
 
     @Override
-    public boolean canCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean canCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (args.length == 0) {
             return false;
         }

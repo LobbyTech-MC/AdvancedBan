@@ -1,4 +1,4 @@
-package com.balugaq.advancedban.api;
+package com.balugaq.advancedban.api.utils;
 
 import com.balugaq.advancedban.implementation.AdvancedBan;
 import org.bukkit.ChatColor;
