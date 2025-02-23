@@ -36,7 +36,7 @@ public class ConfigManager {
     @Since(ConfigVersion.C_20250221_1)
     private ConfigVersion CONFIG_VERSION;
     @Since(ConfigVersion.C_20250223_1)
-    private boolean OP_BYPASS_BAN;
+    private final boolean OP_BYPASS_BAN;
 
     public ConfigManager(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
