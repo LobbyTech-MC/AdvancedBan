@@ -1,12 +1,14 @@
 package com.balugaq.advancedban.api.utils;
 
 import com.balugaq.advancedban.api.enums.EventType;
+import com.balugaq.advancedban.implementation.AdvancedBan;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -16,6 +18,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Set;
 
 @UtilityClass
 public class EventUtil {
@@ -83,7 +87,6 @@ public class EventUtil {
     public static String getSlimefunId(@NotNull ItemStack itemStack) {
         SlimefunItem item = SlimefunItem.getByItem(itemStack);
         String id = item == null ? null : item.getId();
-        Debug.debug("getSlimefunId#ItemStack: id = " + id);
         return id;
     }
 
@@ -153,5 +156,67 @@ public class EventUtil {
 
     public static void notice(@NotNull HumanEntity player, @NotNull EventType eventType, @NotNull String itemName) {
         player.sendMessage(EventUtil.color(eventType.getMessage(), "name", itemName));
+    }
+
+    public static boolean isBypass(@Nullable String itemId, @NotNull EventType eventType, @NotNull Player player) {
+        if (itemId == null) {
+            Debug.debug("Item ID is null, bypassing ban check.");
+            return false;
+        }
+
+        if (AdvancedBan.getInstance().getConfigManager().isOP_BYPASS_BAN() && player.isOp()) {
+            Debug.debug("Player is OP, bypassing ban check.");
+            return true;
+        }
+
+        if (Predications.isBypassPlayer(itemId, eventType, player.getName())
+                || Predications.isBypassPlayer(itemId, eventType, player.getDisplayName())
+                || Predications.isBypassPlayer(itemId, eventType, player.getPlayerListName())) {
+            Debug.debug("Player is bypassing ban check because name matched.");
+            return true;
+        }
+
+        Set<String> permissions = Predications.getBypassPermissions(itemId, eventType);
+        if (permissions.isEmpty()) {
+            Debug.debug("Player cannot bypass ban check because no permissions are present.");
+            return false;
+        }
+        for (String permission : permissions) {
+            if (!player.hasPermission(permission)) {
+                Debug.debug("Player cannot bypass ban check because of missing permission.");
+                return false;
+            }
+        }
+
+        // Player has all permissions for bypassing this check.
+        Debug.debug("Player is bypassing ban check because all permissions are present.");
+        return true;
+    }
+
+    public static boolean isBypass(@Nullable String itemId, @NotNull EventType eventType, HumanEntity humanEntity) {
+        if (humanEntity instanceof Player player) {
+            return isBypass(itemId, eventType, player);
+        } else {
+            if (itemId == null) {
+                return false;
+            }
+
+            if (AdvancedBan.getInstance().getConfigManager().isOP_BYPASS_BAN() && humanEntity.isOp()) {
+                return true;
+            }
+
+            if (Predications.isBypassPlayer(itemId, eventType, humanEntity.getName())) {
+                return true;
+            }
+
+            for (String permissions : Predications.getBypassPermissions(itemId, eventType)) {
+                if (!humanEntity.hasPermission(permissions)) {
+                    return false;
+                }
+            }
+
+            // HumanEntity has all permissions for bypassing this check.
+            return true;
+        }
     }
 }

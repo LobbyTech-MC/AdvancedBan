@@ -14,7 +14,8 @@ public class MultiBlockCraftListener implements Listener {
     public static final EventType TYPE = EventType.MULTI_BLOCK_CRAFT;
 
     public static boolean presetPredications(@NotNull MultiBlockCraftEvent event, @NotNull EventPriority eventPriority) {
-        return Predications.getPriority(EventUtil.getSlimefunId(event), TYPE) == eventPriority;
+        String slimefunId = EventUtil.getSlimefunId(event);
+        return !EventUtil.isBypass(slimefunId, TYPE, event.getPlayer()) && Predications.getPriority(slimefunId, TYPE) == eventPriority;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

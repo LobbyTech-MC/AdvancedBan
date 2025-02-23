@@ -1,60 +1,13 @@
 # Auto update from Guizhan Build is enabled by default.
+# Auto update or not.
 auto-update: true
+# Build station to use.
 build-station: "Guizhan" # Expected "Guizhan" or "Blob"
+# OP bypass SlimefunItem ban or not.
+op-bypass-ban: true # Expected true or false
 
 # Do not change this value unless you know what you are doing.
-config-version: C_20250222_1
+config-version: C_20250223_1
 
 # Do not change this value unless you know what you are doing.
 debug: false
-
-bans:
-  block-break:
-    group1:
-      enabled: true # true / false
-      priority: lowest # lowest / low / normal / high / highest / monitor
-      items:
-        - a_slimefun_id # Slimefun item IDs, ex: STONE_CHUNK / stone_chunk
-        - and_it_s_allow_lowercase_letters
-  block-place:
-    group1:
-      enabled: true
-      priority: low
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters
-  craft-item:
-    group1:
-      enabled: true
-      priority: normal
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters
-  multi-block-craft:
-    group1:
-      enabled: true
-      priority: high
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters
-  player-drop-item:
-    group1:
-      enabled: true
-      priority: highest
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters
-  player-interact:
-    group1:
-      enabled: true
-      priority: monitor
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters
-  machine-craft:
-    group1:
-      enabled: true
-      # No priority for machine-craft
-      items:
-        - a_slimefun_id
-        - and_it_s_allow_lowercase_letters

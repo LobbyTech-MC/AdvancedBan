@@ -16,10 +16,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.logging.Level;
 
 @Getter
 public class ConfigManager {
+    private static final @NotNull String CONFIG_PATH = "config.yml";
+    private static final @NotNull String BANS_PATH = "bans.yml";
     private final @NotNull FileConfiguration config;
+    private final @NotNull FileConfiguration bans;
     @Since(ConfigVersion.C_20250221_1)
     private final boolean AUTO_UPDATE;
     @Since(ConfigVersion.C_20250221_1)
@@ -31,10 +35,13 @@ public class ConfigManager {
     private BuildStation BUILD_STATION;
     @Since(ConfigVersion.C_20250221_1)
     private ConfigVersion CONFIG_VERSION;
+    @Since(ConfigVersion.C_20250223_1)
+    private boolean OP_BYPASS_BAN;
 
     public ConfigManager(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
-        this.config = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "config.yml"));
+        this.config = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), CONFIG_PATH));
+        this.bans = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), BANS_PATH));
         setupDefaultConfig();
         try {
             this.CONFIG_VERSION = ConfigVersion.valueOf(plugin.getConfig().getString("config-version", "UNKNOWN").toUpperCase());
@@ -52,12 +59,13 @@ public class ConfigManager {
             this.BUILD_STATION = BuildStation.GUIZHAN;
         }
         this.LANGUAGE = config.getString("language", "zh-CN");
+        this.OP_BYPASS_BAN = config.getBoolean("op-bypass-ban", true);
     }
 
     private void setupDefaultConfig() {
         // config.yml
-        final InputStream inputStream = plugin.getResource("config.yml");
-        final File existingFile = new File(plugin.getDataFolder(), "config.yml");
+        final InputStream inputStream = plugin.getResource(CONFIG_PATH);
+        final File existingFile = new File(plugin.getDataFolder(), CONFIG_PATH);
 
         if (inputStream == null) {
             return;
@@ -65,16 +73,41 @@ public class ConfigManager {
 
         final Reader reader = new InputStreamReader(inputStream);
         final FileConfiguration resourceConfig = YamlConfiguration.loadConfiguration(reader);
-        final FileConfiguration existingConfig = YamlConfiguration.loadConfiguration(existingFile);
 
-        for (String key : resourceConfig.getKeys(false)) {
-            checkKey(existingConfig, resourceConfig, key);
+        if (!existingFile.exists()) {
+            try {
+                plugin.saveResource(CONFIG_PATH, false);
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().log(Level.SEVERE, "The default config file {0} does not exist in jar file!", "config.yml");
+                return;
+            }
+        } else {
+            final FileConfiguration existingConfig = YamlConfiguration.loadConfiguration(existingFile);
+
+            for (String key : resourceConfig.getKeys(false)) {
+                checkKey(existingConfig, resourceConfig, key);
+            }
+
+            try {
+                existingConfig.save(existingFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        try {
-            existingConfig.save(existingFile);
-        } catch (IOException e) {
-            e.printStackTrace();
+        final InputStream bansInputStream = plugin.getResource(BANS_PATH);
+        if (bansInputStream == null) {
+            return;
+        }
+
+        final File bansFile = new File(plugin.getDataFolder(), BANS_PATH);
+        if (!bansFile.exists()) {
+            try {
+                this.plugin.saveResource(BANS_PATH, false);
+            } catch (IllegalArgumentException var6) {
+                this.plugin.getLogger().log(Level.SEVERE, "The default bans file {0} does not exist in jar file!", BANS_PATH);
+                return;
+            }
         }
     }
 

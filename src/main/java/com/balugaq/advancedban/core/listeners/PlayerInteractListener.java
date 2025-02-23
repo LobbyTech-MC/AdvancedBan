@@ -14,7 +14,8 @@ public class PlayerInteractListener implements Listener {
     public static final EventType TYPE = EventType.PLAYER_INTERACT;
 
     public static boolean presetPredications(@NotNull PlayerInteractEvent event, @NotNull EventPriority eventPriority) {
-        return Predications.getPriority(EventUtil.getSlimefunId(event), TYPE) == eventPriority;
+        String slimefunId = EventUtil.getSlimefunId(event);
+        return !EventUtil.isBypass(slimefunId, TYPE, event.getPlayer()) && Predications.getPriority(slimefunId, TYPE) == eventPriority;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

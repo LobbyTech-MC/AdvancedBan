@@ -6,15 +6,21 @@ import com.balugaq.advancedban.api.utils.EventUtil;
 import com.balugaq.advancedban.api.utils.Predications;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockBreakListener implements Listener {
+public class BlockBreakListener implements AListener {
     public static final EventType TYPE = EventType.BLOCK_BREAK;
 
     public static boolean presetPredications(@NotNull BlockBreakEvent event, @NotNull EventPriority eventPriority) {
-        return Predications.getPriority(EventUtil.getSlimefunId(event), TYPE) == eventPriority;
+        String slimefunId = EventUtil.getSlimefunId(event);
+        boolean isBypass = EventUtil.isBypass(slimefunId, TYPE, event.getPlayer());
+        Debug.debug("isBypass = " + isBypass);
+        boolean priority = Predications.getPriority(slimefunId, TYPE) == eventPriority;
+        Debug.debug("priority = " + priority);
+        Debug.debug("!isBypass && priority = " + (!isBypass && priority));
+        return !isBypass && priority;
+        //return !EventUtil.isBypass(slimefunId, TYPE, event.getPlayer()) && Predications.getPriority(slimefunId, TYPE) == eventPriority;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

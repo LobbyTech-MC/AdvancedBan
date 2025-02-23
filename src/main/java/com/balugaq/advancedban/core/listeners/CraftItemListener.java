@@ -14,7 +14,8 @@ public class CraftItemListener implements Listener {
     public static final EventType TYPE = EventType.CRAFT_ITEM;
 
     public static boolean presetPredications(@NotNull CraftItemEvent event, @NotNull EventPriority eventPriority) {
-        return Predications.getPriority(EventUtil.getSlimefunId(event), TYPE) == eventPriority;
+        String slimefunId = EventUtil.getSlimefunId(event);
+        return !EventUtil.isBypass(slimefunId, TYPE, event.getWhoClicked()) && Predications.getPriority(slimefunId, TYPE) == eventPriority;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

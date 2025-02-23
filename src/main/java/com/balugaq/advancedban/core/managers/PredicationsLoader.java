@@ -19,14 +19,17 @@ public class PredicationsLoader {
     public static final String ENABLED_KEY = "enabled";
     public static final String PRIORITY_KEY = "priority";
     public static final String ITEMS_KEY = "items";
-    public static final String EXAMPLE_ITEM_1 = "a_slimefun_id";
-    public static final String EXAMPLE_ITEM_2 = "and_it_s_allow_lowercase_letters";
+    public static final String PLAYERS_KEY = "players";
+    public static final String PERMISSIONS_KEY = "permissions";
+    public static final String EXAMPLE_ITEM = "a_slimefun_id";
+    public static final String EXAMPLE_PLAYER = "a_player_name";
+    public static final String EXAMPLE_PERMISSION_NODE = "a_permission_node";
     public static final String DEFAULT_PRIORITY = "NORMAL";
 
     public static void loadPredications() {
         boolean configured = true;
         boolean configuredDifferentItem = false;
-        FileConfiguration configuration = AdvancedBan.getInstance().getConfigManager().getConfig();
+        FileConfiguration configuration = AdvancedBan.getInstance().getConfigManager().getBans();
         Debug.debug("Loading predications");
         for (String key : configuration.getKeys(false)) {
             Debug.debug("Key: " + key);
@@ -68,12 +71,14 @@ public class PredicationsLoader {
                     eventPriority = EventPriority.NORMAL;
                 }
 
+                List<String> players = groupSection.getStringList(PLAYERS_KEY);
+                List<String> permissions = groupSection.getStringList(PERMISSIONS_KEY);
                 List<String> items = groupSection.getStringList(ITEMS_KEY);
                 for (String rid : items) {
                     String id = rid.toUpperCase();
                     SlimefunItem slimefunItem = SlimefunItem.getById(id);
                     if (slimefunItem == null) {
-                        if (id.equalsIgnoreCase(EXAMPLE_ITEM_1) || id.equalsIgnoreCase(EXAMPLE_ITEM_2)) {
+                        if (id.equalsIgnoreCase(EXAMPLE_ITEM)) {
                             configured = false;
                             continue;
                         }
@@ -83,9 +88,23 @@ public class PredicationsLoader {
                     }
 
                     Predications.addPredication(id, eventType, eventPriority);
+                    if (players != null && !players.isEmpty()) {
+                        if (players.size() == 1 && players.get(0).equalsIgnoreCase(EXAMPLE_PLAYER)) {
+                            continue;
+                        }
+                        Predications.addBypassPlayers(id, eventType, players);
+                    }
+
+                    if (permissions != null && !permissions.isEmpty()) {
+                        if (permissions.size() == 1 && permissions.get(0).equalsIgnoreCase(EXAMPLE_PERMISSION_NODE)) {
+                            continue;
+                        }
+                        Predications.addBypassPermissions(id, eventType, permissions);
+                    }
                     AdvancedBan.getInstance().getLogger().info(Lang.getMessage("load.added-predication", "id", id, "event_priority", eventPriority, "event_type", eventType.name()));
                     configuredDifferentItem = true;
                 }
+
             }
         }
 

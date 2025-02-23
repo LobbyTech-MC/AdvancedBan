@@ -123,6 +123,8 @@ public class AdvancedBan extends JavaPlugin implements SlimefunAddon {
         getLogger().info("Unloading listeners...");
         getListenerManager().unload();
         Predications.clearPredications();
+        Predications.clearBypassPlayers();
+        Predications.clearBypassPermissions();
         MachineCraftListener.rollback();
         getLogger().info("AdvancedBan disabled.");
     }

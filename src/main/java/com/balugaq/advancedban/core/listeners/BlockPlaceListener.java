@@ -14,7 +14,8 @@ public class BlockPlaceListener implements Listener {
     public static final EventType TYPE = EventType.BLOCK_PLACE;
 
     public static boolean presetPredications(@NotNull BlockPlaceEvent event, @NotNull EventPriority eventPriority) {
-        return Predications.getPriority(EventUtil.getSlimefunId(event), TYPE) == eventPriority;
+        String slimefunId = EventUtil.getSlimefunId(event);
+        return !EventUtil.isBypass(slimefunId, TYPE, event.getPlayer()) && Predications.getPriority(slimefunId, TYPE) == eventPriority;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
