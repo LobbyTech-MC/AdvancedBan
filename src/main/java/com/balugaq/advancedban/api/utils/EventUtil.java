@@ -11,7 +11,9 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -40,6 +42,14 @@ public class EventUtil {
         SlimefunItem item = BlockStorage.check(event.getBlock());
         String id = item == null ? null : item.getId();
         Debug.debug("getSlimefunId#BlockBreakEvent: id = " + id);
+        return id;
+    }
+
+    @Nullable
+    public static String getSlimefunId(@NotNull EntityChangeBlockEvent event) {
+        SlimefunItem item = BlockStorage.check(event.getBlock());
+        String id = item == null ? null : item.getId();
+        Debug.debug("getSlimefunId#EntityChangeBlockEvent: id = " + id);
         return id;
     }
 
@@ -87,6 +97,14 @@ public class EventUtil {
     public static String getSlimefunId(@NotNull ItemStack itemStack) {
         SlimefunItem item = SlimefunItem.getByItem(itemStack);
         String id = item == null ? null : item.getId();
+        return id;
+    }
+
+    @Nullable
+    public static String getSlimefunId(@NotNull BlockBurnEvent event) {
+        SlimefunItem item = BlockStorage.check(event.getBlock());
+        String id = item == null ? null : item.getId();
+        Debug.debug("getSlimefunId#BlockBurnEvent: id = " + id);
         return id;
     }
 

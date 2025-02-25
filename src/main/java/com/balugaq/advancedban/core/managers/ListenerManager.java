@@ -1,8 +1,13 @@
 package com.balugaq.advancedban.core.managers;
 
 import com.balugaq.advancedban.core.listeners.BlockBreakListener;
+import com.balugaq.advancedban.core.listeners.BlockBurnListener;
+import com.balugaq.advancedban.core.listeners.BlockExplodeListener;
 import com.balugaq.advancedban.core.listeners.BlockPlaceListener;
 import com.balugaq.advancedban.core.listeners.CraftItemListener;
+import com.balugaq.advancedban.core.listeners.EntityChangeBlockListener;
+import com.balugaq.advancedban.core.listeners.EntityExplodeListener;
+import com.balugaq.advancedban.core.listeners.ExplosiveToolBreakBlocksListener;
 import com.balugaq.advancedban.core.listeners.MachineCraftListener;
 import com.balugaq.advancedban.core.listeners.MultiBlockCraftListener;
 import com.balugaq.advancedban.core.listeners.PlayerDropItemListener;
@@ -29,8 +34,13 @@ public class ListenerManager {
 
     public void setup() {
         listeners.add(new BlockBreakListener());
+        listeners.add(new BlockBurnListener());
+        listeners.add(new BlockExplodeListener());
         listeners.add(new BlockPlaceListener());
         listeners.add(new CraftItemListener());
+        listeners.add(new EntityChangeBlockListener());
+        listeners.add(new EntityExplodeListener());
+        listeners.add(new ExplosiveToolBreakBlocksListener());
         listeners.add(new MachineCraftListener());
         listeners.add(new MultiBlockCraftListener());
         listeners.add(new PlayerDropItemListener());

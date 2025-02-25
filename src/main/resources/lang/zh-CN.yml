@@ -29,8 +29,14 @@ messages:
     cancel-player-drop-item: "&c服务器已禁止丢弃 {name}."
     cancel-player-interact: "&c服务器已禁止交互 {name}."
     cancel-machine-craft: "&c服务器已禁止合成 {name}."
+    cancel-entity-explode: "&c服务器已禁止爆炸 {name}."
+    cancel-block-explode: "&c服务器已禁止爆炸 {name}."
+    cancel-explosive-tool-break-blocks: "&c服务器已禁止爆炸 {name}."
+    cancel-block-burn: "&c服务器已禁止烧毁 {name}."
+    cancel-entity-change-block: "&c服务器已禁止破坏 {name}."
   load:
-    failed-auto-update: "&c自动更新失败: {message}" # {message} = error message
+    # {message} = error message
+    failed-auto-update: "&c自动更新失败: {message}"
     # {id} = item ID, {event_priority} = priority, {event_type} = event type
     added-predication: "Added predication for {id} with priority {event_priority} for {event_type}"
     no-configured-predications: "你还没有开始配置插件!"

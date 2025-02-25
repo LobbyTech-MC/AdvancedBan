@@ -29,7 +29,14 @@ messages:
     cancel-player-drop-item: "&cDisabled dropping {name}"
     cancel-player-interact: "&cDisabled interacting {name}"
     cancel-machine-craft: "&cDisabled crafting {name}."
+    cancel-entity-explode: "&cDisabled exploding {name}."
+    cancel-block-explode: "&cDisabled exploding {name}."
+    cancel-explosive-tool-break-blocks: "&cDisabled exploding {name}."
+    cancel-block-burn: "&cDisabled burning {name}."
+    cancel-entity-change-block: "&cDisabled breaking {name}."
   load:
+    # {message} = error message
+    failed-auto-update: "&Failed to auto-update: {message}"
     # {id} = item ID, {event_priority} = priority, {event_type} = event type
     added-predication: "Added predication for {id} with priority {event_priority} for {event_type}"
     no-configured-predications: "You have not configured the AdvancedBan plugin. Please check the example config.yml file."

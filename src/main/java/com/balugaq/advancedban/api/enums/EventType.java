@@ -23,6 +23,11 @@ public enum EventType {
     PLAYER_INTERACT("player-interact", Lang.getMessage("events.cancel-player-interact")),
     // Not a real event, but used for cancelling machine crafting
     MACHINE_CRAFT("machine-craft", Lang.getMessage("events.cancel-machine-craft")),
+    ENTITY_EXPLODE("entity-explode", Lang.getMessage("events.cancel-entity-explode")),
+    BLOCK_EXPLODE("block-explode", Lang.getMessage("events.cancel-block-explode")),
+    EXPLOSIVE_TOOL_BREAK_BLOCKS("explosive-tool-break-blocks", Lang.getMessage("events.cancel-explosive-tool-break-blocks")),
+    BLOCK_BURN("block-burn", Lang.getMessage("events.cancel-block-burn")),
+    ENTITY_CHANGE_BLOCK("entity-change-block", Lang.getMessage("events.cancel-entity-change-block")),
     ;
 
     private final @NotNull String key;
