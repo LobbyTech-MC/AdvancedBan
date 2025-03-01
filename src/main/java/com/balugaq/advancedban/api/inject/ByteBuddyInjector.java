@@ -96,10 +96,11 @@ public class ByteBuddyInjector {
                 return false; // continue the original logic
             }
 
-            Debug.debug("BlockPlaceListener#onMethodEnter(): Entered. 54");
+            Debug.debug("BlockListener#onMethodEnter(): Entered. 54");
 
-            if (Predications.preset(EventUtil.getSlimefunId(event), BlockPlaceListener.TYPE)) {
-                Debug.debug("BlockPlaceListener#onMethodEnter(): Is banned item. 57");
+            String id = EventUtil.getSlimefunId(event);
+            if (!EventUtil.isBypass(id, BlockPlaceListener.TYPE, event.getPlayer()) && Predications.preset(id, BlockPlaceListener.TYPE)) {
+                Debug.debug("BlockListener#onMethodEnter(): Is banned item. 57");
                 return true; // ignored the original logic
             }
             return false; // continue the original logic
