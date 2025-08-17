@@ -59,6 +59,7 @@ public class ByteBuddyInjector {
             e.printStackTrace();
         }
 
+        /*
         if (AdvancedBan.getInstance().getIntegrationManager().isEnabledFastMachines()) {
             Debug.log("Injecting FastMachines#SlimefunItemUtils.isDisabled(ItemStack)");
             try {
@@ -78,6 +79,7 @@ public class ByteBuddyInjector {
                 e.printStackTrace();
             }
         }
+        */
     }
 
     /**
